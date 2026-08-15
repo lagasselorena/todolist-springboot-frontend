@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import TaskForm from './components/TaskForm'
 import TaskList from './components/TaskList'
 import './App.css'
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="app">
       <h1>Minha lista de tarefas</h1>
+      <TaskForm />
       <TaskList tasks={tasks} />
     </div>
   )
