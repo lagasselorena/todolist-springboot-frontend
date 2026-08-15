@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import TaskItem from './components/TaskItem'
 import './App.css'
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
       <h1>Minha lista de tarefas</h1>
       <ul>
         {tasks.map(task => (
-          <li key={task.id}>{task.title}</li>
+          <TaskItem key={task.id} task={task} />
         ))}
       </ul>
     </div>
