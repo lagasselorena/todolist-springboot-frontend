@@ -12,10 +12,14 @@ function App() {
       .then(data => setTasks(data))
   }, [])
 
+  function handleTaskCreated(novaTarefa) {
+    setTasks([...tasks, novaTarefa])
+  }
+
   return (
     <div className="app">
       <h1>Minha lista de tarefas</h1>
-      <TaskForm />
+      <TaskForm onTaskCreated={handleTaskCreated} />
       <TaskList tasks={tasks} />
     </div>
   )
