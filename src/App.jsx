@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import TaskItem from './components/TaskItem'
+import TaskList from './components/TaskList'
 import './App.css'
 
 function App() {
@@ -8,20 +8,13 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:8080/api/tasks')
       .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        setTasks(data)
-      })
+      .then(data => setTasks(data))
   }, [])
 
   return (
     <div className="app">
       <h1>Minha lista de tarefas</h1>
-      <ul>
-        {tasks.map(task => (
-          <TaskItem key={task.id} task={task} />
-        ))}
-      </ul>
+      <TaskList tasks={tasks} />
     </div>
   )
 }
