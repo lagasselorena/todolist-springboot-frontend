@@ -6,12 +6,17 @@ import './App.css'
 function App() {
   const [tasks, setTasks] = useState([])
   const [loading, setLoading] = useState(true)
+  const [erro, setErro] = useState(null)
 
   useEffect(() => {
     fetch('http://localhost:8080/api/tasks')
       .then(response => response.json())
       .then(data => {
         setTasks(data)
+        setLoading(false)
+      })
+      .catch(() => {
+        setErro('Erro ao carregar tarefas.')
         setLoading(false)
       })
   }, [])
@@ -34,6 +39,9 @@ function App() {
     <div className="app">
       <h1>Minha lista de tarefas</h1>
       <TaskForm onTaskCreated={handleTaskCreated} />
+
+      {erro && <p className="erro">{erro}</p>}
+
       {loading ? (
         <p>Carregando tarefas...</p>
       ) : (
