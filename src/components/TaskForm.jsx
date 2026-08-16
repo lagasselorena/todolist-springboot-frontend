@@ -30,7 +30,8 @@ function TaskForm({ onTaskCreated }) {
   }
 
   return (
-    <form className="task-form" onSubmit={handleSubmit}>
+  <form className="task-form" onSubmit={handleSubmit}>
+    <div className="campos">
       <input
         type="text"
         value={title}
@@ -48,9 +49,10 @@ function TaskForm({ onTaskCreated }) {
         <option value="MEDIUM">Média</option>
         <option value="HIGH">Alta</option>
       </select>
-      <button type="submit">Adicionar</button>
-    </form>
-  )
+    </div>
+    <button type="submit">Adicionar</button>
+  </form>
+)
 }
 
 export default TaskForm

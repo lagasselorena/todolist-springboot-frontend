@@ -1,6 +1,6 @@
 /* ===== Variáveis de cor (design tokens) ===== */
 :root {
-  --bg: #eef0f4;
+  --bg: #b7caf1;
   --ink: #232b3d;
   --ink-soft: #5b6478;
   --card: #ffffff;
@@ -23,7 +23,7 @@ body {
   font-family: 'Segoe UI', system-ui, sans-serif;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   padding: 48px 16px;
 }
 
@@ -59,8 +59,16 @@ body {
 
 .task-form {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 8px;
   margin-bottom: 32px;
+}
+
+.task-form .campos {
+  display: flex;
+  gap: 8px;
+  width: 100%;
   flex-wrap: wrap;
 }
 
