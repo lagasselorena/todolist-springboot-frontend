@@ -30,7 +30,7 @@ function TaskForm({ onTaskCreated }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="task-form" onSubmit={handleSubmit}>
       <input
         type="text"
         value={title}

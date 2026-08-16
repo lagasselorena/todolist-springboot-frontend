@@ -13,27 +13,32 @@ function TaskItem({ task, onToggle, onDelete }) {
   }
 
   function handleDelete() {
-    const confirmDelete = window.confirm('Tem certeza que deseja excluir esta tarefa?')
-    if (confirmDelete) {
-      fetch(`http://localhost:8080/api/tasks/${task.id}`, {
-        method: 'DELETE'
-      })
-        .then(() => onDelete(task.id))
+    const confirmar = window.confirm(`Tem certeza que deseja excluir "${task.title}"?`)
+
+    if (!confirmar) {
+      return
     }
+
+    fetch(`http://localhost:8080/api/tasks/${task.id}`, {
+      method: 'DELETE'
+    })
+      .then(() => onDelete(task.id))
   }
 
   return (
-    <li>
+    <li className={`task-item priority-${task.priority}`}>
       <input
         type="checkbox"
         checked={task.completed}
         onChange={handleToggle}
       />
-      <strong style={{ textDecoration: task.completed ? 'line-through' : 'none' }}>
-        {task.title}
-      </strong>
-      <p>{task.description}</p>
-      <button onClick={handleDelete}>Excluir</button>
+      <div className="task-content">
+        <strong className={`task-title ${task.completed ? 'done' : ''}`}>
+          {task.title}
+        </strong>
+        <p className="task-description">{task.description}</p>
+      </div>
+      <button className="excluir" onClick={handleDelete}>Excluir</button>
     </li>
   )
 }
