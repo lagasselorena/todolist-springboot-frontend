@@ -8,6 +8,15 @@ function TaskForm({ onTaskCreated }) {
   function handleSubmit(event) {
     event.preventDefault()
 
+       if (title.trim() === '') {
+    alert('Digite um título para a tarefa.')
+    return
+  }
+
+  if (description.trim() === '') {
+    alert('Digite uma descrição para a tarefa.')
+    return
+  }
     const novaTarefa = {
       title,
       description,
