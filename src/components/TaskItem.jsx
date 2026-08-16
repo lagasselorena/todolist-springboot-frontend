@@ -13,10 +13,13 @@ function TaskItem({ task, onToggle, onDelete }) {
   }
 
   function handleDelete() {
-    fetch(`http://localhost:8080/api/tasks/${task.id}`, {
-      method: 'DELETE'
-    })
-      .then(() => onDelete(task.id))
+    const confirmDelete = window.confirm('Tem certeza que deseja excluir esta tarefa?')
+    if (confirmDelete) {
+      fetch(`http://localhost:8080/api/tasks/${task.id}`, {
+        method: 'DELETE'
+      })
+        .then(() => onDelete(task.id))
+    }
   }
 
   return (
